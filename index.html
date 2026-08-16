@@ -1,1 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Study Nook 🌷</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- MOBILE HEADER -->
+        <header class="mobile-header">
+            <button class="menu-button" onclick="toggleSidebar()">☰</button>
+            <h1>Study Nook 🌷</h1>
+        </header>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <div class="logo-flower">🌷</div>
+                <div>
+                    <h1>Study Nook</h1>
+                    <p>your cosy study corner</p>
+                </div>
+            </div>
+
+            <nav>
+
+                <button class="nav-item active" data-page="home" onclick="showPage('home')">
+                    🏠
+                    <span>My Nook</span>
+                </button>
+
+                <button class="nav-item" data-page="calendar" onclick="showPage('calendar')">
+                    📅
+                    <span>Calendar</span>
+                </button>
+
+                <button class="nav-item" data-page="rooms" onclick="showPage('rooms')">
+                    🏫
+                    <span>Study Rooms</span>
+                </button>
+
+                <button class="nav-item" data-page="timer" onclick="showPage('timer')">
+                    ⏱️
+                    <span>Focus Timer</span>
+                </button>
+
+                <button class="nav-item" data-page="closet" onclick="showPage('closet')">
+                    🎀
+                    <span>Avatar Closet</span>
+                </button>
+
+                <button class="nav-item" data-page="ai" onclick="showPage('ai')">
+                    🤖
+                    <span>Study AI</span>
+                </button>
+
+                <button class="nav-item" data-page="resources" onclick="showPage('resources')">
+                    📚
+                    <span>Resources</span>
+                </button>
+
+                <button class="nav-item" data-page="profile" onclick="showPage('profile')">
+                    👤
+                    <span>Profile</span>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-note">
+                <span>🌱</span>
+                <p>A little progress is still progress ♡</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HOME -->
+            <section class="page active-page" id="home">
+
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">WELCOME BACK ♡</p>
+                        <h2>Good morning, <span id="dashboardUsername">Student</span>!</h2>
+                        <p>Let's make today a gentle study day.</p>
+                    </div>
+
+                    <div class="date-sticker">
+                        🌷 <span id="todayDate"></span>
+                    </div>
+                </div>
+
+
+                <!-- DASHBOARD HERO -->
+                <div class="dashboard-grid">
+
+                    <div class="scrap-card welcome-card taped">
+
+                        <div class="card-tape"></div>
+
+                        <div class="avatar-large">
+                            <div class="avatar-placeholder">
+                                <div class="avatar-hair"></div>
+                                <div class="avatar-face">
+                                    <span class="eye left-eye"></span>
+                                    <span class="eye right-eye"></span>
+                                    <span class="blush left-blush"></span>
+                                    <span class="blush right-blush"></span>
+                                    <span class="mouth">⌣</span>
+                                </div>
+                                <div class="avatar-body">♡</div>
+                            </div>
+                        </div>
+
+                        <div class="welcome-info">
+                            <span class="status-badge">🟢 Studying</span>
+
+                            <h3 id="welcomeName">Student</h3>
+
+                            <p>
+                                Level <span id="levelDisplay">1</span>
+                                ·
+                                <span id="levelTitle">Little Learner</span>
+                            </p>
+
+                            <div class="xp-line">
+                                <span>⭐ <span id="xpDisplay">0</span> XP</span>
+                                <span><span id="xpNeeded">100</span> XP</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div id="xpProgress" class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TODAY STATS -->
+                    <div class="scrap-card stats-card">
+
+                        <div class="sticker">📚</div>
+
+                        <p class="eyebrow">YOUR STUDY DAY</p>
+
+                        <div class="big-stat">
+                            <span id="todayStudyTime">0m</span>
+                            <small>studied today</small>
+                        </div>
+
+                        <div class="mini-stats">
+
+                            <div>
+                                <strong id="streakDisplay">0</strong>
+                                <span>🔥 streak</span>
+                            </div>
+
+                            <div>
+                                <strong id="sessionDisplay">0</strong>
+                                <span>sessions</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOCUS + EVENTS -->
+                <div class="two-column">
+
+                    <div class="scrap-card focus-card">
+
+                        <div class="card-header">
+                            <div>
+                                <p class="eyebrow">TODAY'S FOCUS</p>
+                                <h3>One little step at a time 🌱</h3>
+                            </div>
+
+                            <span class="sticker-small">✏️</span>
+                        </div>
+
+                        <div class="focus-time">
+                            <strong id="goalTime">0m</strong>
+                            <span>/ 2 hours</span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div id="goalProgress" class="progress-fill"></div>
+                        </div>
+
+                        <p id="focusMessage">
+                            Start a focus session whenever you're ready ♡
+                        </p>
+
+                        <button class="primary-button" onclick="showPage('timer')">
+                            Start Focus →
+                        </button>
+
+                    </div>
+
+
+                    <div class="scrap-card events-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <p class="eyebrow">COMING UP</p>
+                                <h3>Upcoming Events 📅</h3>
+                            </div>
+
+                            <button class="text-button" onclick="showPage('calendar')">
+                                View Calendar →
+                            </button>
+
+                        </div>
+
+                        <div id="dashboardEvents">
+                            <div class="empty-state">
+                                <span>🌷</span>
+                                <p>Your calendar is clear!</p>
+                                <small>Add something coming up.</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTINUE STUDYING -->
+                <div class="scrap-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p>
+                            <h3>Continue Studying 📚</h3>
+                        </div>
+
+                    </div>
+
+                    <div id="recentRooms" class="room-preview-grid">
+
+                        <div class="room-preview">
+                            <span class="room-icon">📐</span>
+                            <div>
+                                <small>Level 1 · Mathematics</small>
+                                <h4>Mathematics Study Room</h4>
+                                <p>Ready whenever you are ♡</p>
+                            </div>
+                            <button onclick="openRoom('level1-mathematics')">Continue</button>
+                        </div>
+
+                        <div class="room-preview">
+                            <span class="room-icon">📖</span>
+                            <div>
+                                <small>Level 1 · English</small>
+                                <h4>English Study Room</h4>
+                                <p>Ready whenever you are ♡</p>
+                            </div>
+                            <button onclick="openRoom('level1-english')">Continue</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MOTIVATION -->
+                <div class="motivation-note">
+                    <span>🌸</span>
+                    <p id="motivationText">
+                        A little progress is still progress ♡
+                    </p>
+                    <span>✿</span>
+                </div>
+
+            </section>
+
+
+            <!-- CALENDAR -->
+            <section class="page" id="calendar">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">PLAN YOUR DAYS</p>
+                        <h2>School Calendar 📅</h2>
+                        <p>Keep track of the little and important things.</p>
+                    </div>
+
+                    <button class="primary-button" onclick="openEventModal()">
+                        + Add Event
+                    </button>
+
+                </div>
+
+                <div class="calendar-layout">
+
+                    <div class="scrap-card calendar-card">
+
+                        <div class="calendar-top">
+
+                            <button onclick="changeMonth(-1)">←</button>
+
+                            <h3 id="calendarMonth"></h3>
+
+                            <button onclick="changeMonth(1)">→</button>
+
+                        </div>
+
+                        <button class="today-button" onclick="goToToday()">
+                            Today
+                        </button>
+
+                        <div class="calendar-weekdays">
+                            <span>Sun</span>
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                        </div>
+
+                        <div id="calendarGrid" class="calendar-grid"></div>
+
+                    </div>
+
+
+                    <div class="scrap-card upcoming-card">
+
+                        <p class="eyebrow">WHAT'S NEXT</p>
+                        <h3>Upcoming Events</h3>
+
+                        <div id="upcomingEvents">
+                            <div class="empty-state">
+                                <span>🌷</span>
+                                <p>Your calendar is clear!</p>
+                                <small>Enjoy the free time or add something coming up.</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STUDY ROOMS -->
+            <section class="page" id="rooms">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">STUDY TOGETHER</p>
+                        <h2>Study Rooms 🏫</h2>
+                        <p>Choose your level, then your subject.</p>
+                    </div>
+
+                </div>
+
+                <div id="roomBrowser"></div>
+
+                <div id="roomInterface" class="room-interface hidden"></div>
+
+            </section>
+
+
+            <!-- TIMER -->
+            <section class="page" id="timer">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">FOCUS GENTLY</p>
+                        <h2>Focus Timer ⏱️</h2>
+                        <p>Take your time. You don't have to rush.</p>
+                    </div>
+
+                </div>
+
+                <div class="timer-layout">
+
+                    <div class="scrap-card timer-card">
+
+                        <div class="timer-tabs">
+
+                            <button class="timer-tab active" onclick="setTimerMode('stopwatch')">
+                                Stopwatch
+                            </button>
+
+                            <button class="timer-tab" onclick="setTimerMode('pomodoro')">
+                                Pomodoro
+                            </button>
+
+                        </div>
+
+                        <p id="timerModeLabel">STOPWATCH</p>
+
+                        <div id="timerDisplay">00:00:00</div>
+
+                        <div id="pomodoroLabel" class="hidden">
+                            Focus Session
+                        </div>
+
+                        <div class="timer-controls">
+
+                            <button class="primary-button" onclick="startTimer()">
+                                Start
+                            </button>
+
+                            <button class="secondary-button" onclick="pauseTimer()">
+                                Pause
+                            </button>
+
+                            <button class="secondary-button" onclick="resetTimer()">
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="scrap-card">
+
+                        <p class="eyebrow">POMODORO</p>
+                        <h3>Choose your rhythm 🍅</h3>
+
+                        <div class="preset-buttons">
+
+                            <button onclick="setPomodoro(25,5)">
+                                <strong>25 / 5</strong>
+                                <small>25 min focus · 5 min break</small>
+                            </button>
+
+                            <button onclick="setPomodoro(50,10)">
+                                <strong>50 / 10</strong>
+                                <small>50 min focus · 10 min break</small>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- AVATAR CLOSET -->
+            <section class="page" id="closet">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">MAKE IT YOURS</p>
+                        <h2>Avatar Closet 🎀</h2>
+                        <p>Create a Study Nook character that feels like you.</p>
+                    </div>
+
+                </div>
+
+                <div class="closet-layout">
+
+                    <div class="scrap-card avatar-display-card">
+
+                        <div class="large-avatar" id="closetAvatar">
+                            <div class="avatar-placeholder">
+                                <div class="avatar-hair"></div>
+                                <div class="avatar-face">
+                                    <span class="eye left-eye"></span>
+                                    <span class="eye right-eye"></span>
+                                    <span class="blush left-blush"></span>
+                                    <span class="blush right-blush"></span>
+                                    <span class="mouth">⌣</span>
+                                </div>
+                                <div class="avatar-body">♡</div>
+                            </div>
+                        </div>
+
+                        <div class="closet-actions">
+                            <button class="primary-button" onclick="saveAvatar()">
+                                Save Look ♡
+                            </button>
+
+                            <button class="secondary-button" onclick="resetAvatar()">
+                                Reset
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scrap-card closet-options">
+
+                        <div class="closet-tabs">
+
+                            <button class="closet-tab active">Hair</button>
+                            <button class="closet-tab">Face</button>
+                            <button class="closet-tab">Tops</button>
+                            <button class="closet-tab">Bottoms</button>
+                            <button class="closet-tab">Shoes</button>
+                            <button class="closet-tab">Bags</button>
+                            <button class="closet-tab">Accessories</button>
+                            <button class="closet-tab">Hats</button>
+                            <button class="closet-tab">Glasses</button>
+                            <button class="closet-tab">Hijab / Headwear</button>
+
+                        </div>
+
+                        <div class="option-section">
+
+                            <h3>Skin tone</h3>
+
+                            <div class="option-row">
+
+                                <button class="skin-option" style="background:#f6d2b8" onclick="setSkin('#f6d2b8')"></button>
+                                <button class="skin-option" style="background:#e9b58e" onclick="setSkin('#e9b58e')"></button>
+                                <button class="skin-option" style="background:#c98c68" onclick="setSkin('#c98c68')"></button>
+                                <button class="skin-option" style="background:#9b6247" onclick="setSkin('#9b6247')"></button>
+                                <button class="skin-option" style="background:#70402f" onclick="setSkin('#70402f')"></button>
+                                <button class="skin-option" style="background:#4b2921" onclick="setSkin('#4b2921')"></button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="option-section">
+
+                            <h3>Presentation</h3>
+
+                            <div class="choice-buttons">
+
+                                <button onclick="setPresentation('feminine')">
+                                    Feminine
+                                </button>
+
+                                <button onclick="setPresentation('masculine')">
+                                    Masculine
+                                </button>
+
+                                <button onclick="setPresentation('androgynous')">
+                                    Androgynous
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="option-section">
+
+                            <h3>Hair</h3>
+
+                            <div class="choice-buttons">
+
+                                <button onclick="setHair('short')">Short</button>
+                                <button onclick="setHair('long')">Long</button>
+                                <button onclick="setHair('curly')">Curly</button>
+                                <button onclick="setHair('bob')">Bob</button>
+                                <button onclick="setHair('braids')">Braids</button>
+                                <button onclick="setHair('bun')">Bun</button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="option-section">
+
+                            <h3>Headwear</h3>
+
+                            <div class="choice-buttons">
+
+                                <button onclick="setHeadwear('none')">None</button>
+                                <button onclick="setHeadwear('hijab')">Simple Hijab</button>
+                                <button onclick="setHeadwear('wrapped')">Wrapped Hijab</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- AI -->
+            <section class="page" id="ai">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">YOUR STUDY HELPER</p>
+                        <h2>Study AI 🤖</h2>
+                        <p>Turn your notes into useful study materials.</p>
+                    </div>
+
+                </div>
+
+                <div class="ai-grid">
+
+                    <div class="scrap-card">
+
+                        <span class="ai-icon">✨</span>
+
+                        <h3>Summarise Notes</h3>
+
+                        <textarea id="summaryInput" placeholder="Paste your notes here..."></textarea>
+
+                        <button class="primary-button" onclick="summariseNotes()">
+                            Summarise ✨
+                        </button>
+
+                        <div id="summaryOutput" class="ai-output"></div>
+
+                    </div>
+
+
+                    <div class="scrap-card">
+
+                        <span class="ai-icon">🃏</span>
+
+                        <h3>Generate Flashcards</h3>
+
+                        <textarea id="flashcardInput" placeholder="Paste your notes here..."></textarea>
+
+                        <button class="primary-button" onclick="generateFlashcards()">
+                            Make Flashcards
+                        </button>
+
+                        <div id="flashcardOutput" class="ai-output"></div>
+
+                    </div>
+
+
+                    <div class="scrap-card">
+
+                        <span class="ai-icon">✏️</span>
+
+                        <h3>Generate Quiz</h3>
+
+                        <textarea id="quizInput" placeholder="Paste your notes here..."></textarea>
+
+                        <button class="primary-button" onclick="generateQuiz()">
+                            Create Quiz
+                        </button>
+
+                        <div id="quizOutput" class="ai-output"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RESOURCES -->
+            <section class="page" id="resources">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">SHARE SOMETHING USEFUL</p>
+                        <h2>Resources 📚</h2>
+                        <p>Keep your favourite study links in one place.</p>
+                    </div>
+
+                    <button class="primary-button" onclick="openResourceModal()">
+                        + Add Resource
+                    </button>
+
+                </div>
+
+                <div class="resource-filters">
+
+                    <select id="resourceLevelFilter" onchange="renderResources()">
+                        <option value="all">All Levels</option>
+                        <option value="1">Level 1</option>
+                        <option value="2">Level 2</option>
+                        <option value="3">Level 3</option>
+                        <option value="4">Level 4</option>
+                    </select>
+
+                    <select id="resourceSubjectFilter" onchange="renderResources()">
+                        <option value="all">All Subjects</option>
+                        <option>Mathematics</option>
+                        <option>English</option>
+                        <option>Science</option>
+                        <option>Humanities</option>
+                    </select>
+
+                </div>
+
+                <div id="resourceList" class="resource-grid"></div>
+
+            </section>
+
+
+            <!-- PROFILE -->
+            <section class="page" id="profile">
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">YOUR STUDY JOURNEY</p>
+                        <h2>My Profile 👤</h2>
+                        <p>Everything you've achieved so far.</p>
+                    </div>
+
+                </div>
+
+                <div class="profile-layout">
+
+                    <div class="scrap-card profile-card">
+
+                        <div class="profile-avatar" id="profileAvatar">
+                            <div class="avatar-placeholder">
+                                <div class="avatar-hair"></div>
+                                <div class="avatar-face">
+                                    <span class="eye left-eye"></span>
+                                    <span class="eye right-eye"></span>
+                                    <span class="blush left-blush"></span>
+                                    <span class="blush right-blush"></span>
+                                    <span class="mouth">⌣</span>
+                                </div>
+                                <div class="avatar-body">♡</div>
+                            </div>
+                        </div>
+
+                        <h3 id="profileUsername">Student</h3>
+
+                        <p>
+                            Level <span id="profileLevel">1</span>
+                        </p>
+
+                    </div>
+
+
+                    <div class="scrap-card profile-stats">
+
+                        <p class="eyebrow">STUDY STATISTICS</p>
+
+                        <div class="stat-grid">
+
+                            <div>
+                                <strong id="profileXP">0</strong>
+                                <span>XP</span>
+                            </div>
+
+                            <div>
+                                <strong id="profileStudyTime">0m</strong>
+                                <span>Total study time</span>
+                            </div>
+
+                            <div>
+                                <strong id="profileStreak">0</strong>
+                                <span>Current streak</span>
+                            </div>
+
+                            <div>
+                                <strong id="profileSessions">0</strong>
+                                <span>Sessions</span>
+                            </div>
+
+                        </div>
+
+                        <h3>Favourite Subjects 🌷</h3>
+
+                        <div class="subject-tags">
+                            <span>Mathematics</span>
+                            <span>English</span>
+                            <span>Science</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- EVENT MODAL -->
+    <div id="eventModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button class="close-button" onclick="closeEventModal()">×</button>
+
+            <p class="eyebrow">ADD SOMETHING NEW</p>
+            <h2>Add Event 📅</h2>
+
+            <form id="eventForm">
+
+                <label>
+                    Event name
+                    <input id="eventTitle" required>
+                </label>
+
+                <label>
+                    Date
+                    <input id="eventDate" type="date" required>
+                </label>
+
+                <label>
+                    Start time
+                    <input id="eventStart" type="time">
+                </label>
+
+                <label>
+                    End time
+                    <input id="eventEnd" type="time">
+                </label>
+
+                <label>
+                    Category
+                    <select id="eventCategory">
+
+                        <option>📚 Test</option>
+                        <option>📝 Assignment</option>
+                        <option>🎓 Exam</option>
+                        <option>🎨 Project</option>
+                        <option>🏫 School Event</option>
+                        <option>🎀 CCA</option>
+                        <option>🌷 Holiday</option>
+                        <option>⏰ Deadline</option>
+                        <option>📌 Other</option>
+
+                    </select>
+                </label>
+
+                <label>
+                    Subject
+                    <input id="eventSubject">
+                </label>
+
+                <label>
+                    Description
+                    <textarea id="eventDescription"></textarea>
+                </label>
+
+                <button class="primary-button" type="submit">
+                    Save Event ♡
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESOURCE MODAL -->
+    <div id="resourceModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button class="close-button" onclick="closeResourceModal()">×</button>
+
+            <p class="eyebrow">SAVE SOMETHING USEFUL</p>
+            <h2>Add Resource 📚</h2>
+
+            <form id="resourceForm">
+
+                <label>
+                    Title
+                    <input id="resourceTitle" required>
+                </label>
+
+                <label>
+                    Subject
+                    <select id="resourceSubject">
+                        <option>Mathematics</option>
+                        <option>English</option>
+                        <option>Science</option>
+                        <option>Humanities</option>
+                    </select>
+                </label>
+
+                <label>
+                    Level
+                    <select id="resourceLevel">
+                        <option value="1">Level 1</option>
+                        <option value="2">Level 2</option>
+                        <option value="3">Level 3</option>
+                        <option value="4">Level 4</option>
+                    </select>
+                </label>
+
+                <label>
+                    Description
+                    <textarea id="resourceDescription"></textarea>
+                </label>
+
+                <label>
+                    Link
+                    <input id="resourceLink" type="url" placeholder="https://..." required>
+                </label>
+
+                <button class="primary-button" type="submit">
+                    Add Resource ♡
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
