@@ -1,1 +1,1309 @@
+```css
+:root {
+    --cream: #f8f2e8;
+    --paper: #fffdf8;
+    --pink: #e9c7c9;
+    --rose: #b8797f;
+    --lavender: #d9d0e6;
+    --sage: #cbd8c3;
+    --blue: #cbdce5;
+    --peach: #efd1b8;
+    --brown: #66564d;
+    --dark: #403832;
+    --muted: #8b7d73;
+    --white: #fffdf9;
+    --shadow: 0 8px 25px rgba(88, 67, 53, 0.08);
+    --radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(233,199,201,.25) 0 2px, transparent 3px),
+        var(--cream);
+    color: var(--dark);
+    font-family: "DM Sans", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    padding: 28px 18px;
+    background: rgba(255,253,248,.92);
+    border-right: 1px dashed #d9c9bc;
+    z-index: 20;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.logo-flower {
+    font-size: 35px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-family: "Patrick Hand", cursive;
+    font-size: 31px;
+    color: var(--rose);
+}
+
+.logo p {
+    margin: 0;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    border: 0;
+    background: transparent;
+    color: var(--brown);
+    padding: 12px 14px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    transition: .2s;
+}
+
+.nav-item:hover {
+    background: #f5e8df;
+    transform: translateX(2px);
+}
+
+.nav-item.active {
+    background: var(--pink);
+    color: #5b4742;
+    box-shadow: 3px 4px 0 rgba(164,119,119,.12);
+}
+
+.nav-item span {
+    font-weight: 600;
+}
+
+.sidebar-note {
+    position: absolute;
+    bottom: 25px;
+    left: 20px;
+    right: 20px;
+    padding: 16px;
+    background: #f3ead9;
+    border-radius: 5px;
+    transform: rotate(-2deg);
+    border: 1px solid #e1d2bd;
+}
+
+.sidebar-note span {
+    font-size: 22px;
+}
+
+.sidebar-note p {
+    font-family: "Patrick Hand", cursive;
+    font-size: 17px;
+    margin: 5px 0 0;
+}
+
+
+/* MOBILE */
+
+.mobile-header {
+    display: none;
+}
+
+
+/* MAIN */
+
+.main-content {
+    margin-left: 260px;
+    padding: 45px;
+    max-width: 1500px;
+}
+
+.page {
+    display: none;
+    animation: fadeIn .25s ease;
+}
+
+.page.active-page {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--rose);
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+h2,
+h3,
+h4 {
+    margin-top: 0;
+}
+
+h2 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 45px;
+    margin-bottom: 3px;
+}
+
+.page-heading p:not(.eyebrow) {
+    color: var(--muted);
+    margin: 0;
+}
+
+.date-sticker {
+    background: #f2d8b9;
+    padding: 10px 17px;
+    transform: rotate(2deg);
+    box-shadow: 3px 4px 0 rgba(110,80,55,.08);
+}
+
+
+/* CARDS */
+
+.scrap-card {
+    position: relative;
+    background: var(--paper);
+    border: 1px solid #e4d8ca;
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.taped {
+    overflow: visible;
+}
+
+.card-tape {
+    position: absolute;
+    width: 90px;
+    height: 25px;
+    background: rgba(233,199,201,.72);
+    top: -11px;
+    left: 40%;
+    transform: rotate(-3deg);
+}
+
+
+/* DASHBOARD */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.welcome-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    min-height: 260px;
+}
+
+.avatar-large {
+    min-width: 170px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-info {
+    flex: 1;
+}
+
+.welcome-info h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 35px;
+    margin: 10px 0 2px;
+}
+
+.welcome-info p {
+    color: var(--muted);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 7px 12px;
+    background: #e1ecd9;
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+.xp-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #eee5dc;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 7px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--rose);
+    border-radius: 20px;
+    transition: width .4s ease;
+}
+
+.stats-card {
+    min-height: 260px;
+}
+
+.sticker {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    transform: rotate(10deg);
+}
+
+.big-stat {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+}
+
+.big-stat span {
+    font-family: "Patrick Hand", cursive;
+    font-size: 50px;
+    color: var(--rose);
+}
+
+.big-stat small {
+    color: var(--muted);
+}
+
+.mini-stats {
+    display: flex;
+    gap: 35px;
+}
+
+.mini-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.mini-stats strong {
+    font-size: 23px;
+}
+
+.mini-stats span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-header h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.sticker-small {
+    font-size: 30px;
+}
+
+.focus-time {
+    margin: 25px 0 8px;
+}
+
+.focus-time strong {
+    font-size: 28px;
+}
+
+.focus-time span {
+    color: var(--muted);
+}
+
+.focus-card p:not(.eyebrow) {
+    color: var(--muted);
+}
+
+.primary-button,
+.secondary-button {
+    border: 0;
+    border-radius: 13px;
+    padding: 11px 18px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.primary-button {
+    background: var(--rose);
+    color: white;
+    box-shadow: 0 4px 0 #9f686e;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: #eee4d9;
+    color: var(--brown);
+}
+
+.text-button {
+    background: transparent;
+    border: 0;
+    color: var(--rose);
+    font-weight: 700;
+}
+
+.room-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.room-preview {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f2e9;
+    border-radius: 16px;
+}
+
+.room-preview .room-icon {
+    font-size: 30px;
+}
+
+.room-preview small,
+.room-preview p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.room-preview h4 {
+    margin: 3px 0;
+}
+
+.room-preview button {
+    margin-left: auto;
+    border: 0;
+    background: #e5d8e7;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.motivation-note {
+    margin: 25px auto;
+    max-width: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: #f3e7ad;
+    padding: 16px 25px;
+    transform: rotate(-1deg);
+    box-shadow: 3px 4px 0 rgba(90,70,30,.08);
+}
+
+.motivation-note p {
+    font-family: "Patrick Hand", cursive;
+    font-size: 21px;
+}
+
+
+/* EMPTY STATES */
+
+.empty-state {
+    padding: 25px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.empty-state span {
+    display: block;
+    font-size: 30px;
+}
+
+.empty-state p {
+    margin: 5px 0;
+}
+
+
+/* CALENDAR */
+
+.calendar-layout {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 20px;
+}
+
+.calendar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-top h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 30px;
+}
+
+.calendar-top button {
+    border: 0;
+    background: #f1e4d8;
+    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+}
+
+.today-button {
+    border: 0;
+    background: transparent;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 10px 0;
+}
+
+.calendar-day {
+    min-height: 90px;
+    border: 1px dashed #dfd2c6;
+    padding: 7px;
+    cursor: pointer;
+    background: #fffdf9;
+}
+
+.calendar-day:hover {
+    background: #faf1eb;
+}
+
+.calendar-day.today {
+    background: #f4e2e4;
+}
+
+.calendar-day-number {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.calendar-event {
+    margin-top: 5px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    background: #dfe8d8;
+    font-size: 9px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.upcoming-event {
+    padding: 14px;
+    margin-top: 12px;
+    background: #f8f1e9;
+    border-radius: 14px;
+}
+
+.upcoming-event h4 {
+    margin: 3px 0;
+}
+
+.upcoming-event p {
+    margin: 3px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* TIMER */
+
+.timer-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+}
+
+.timer-card {
+    text-align: center;
+}
+
+.timer-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.timer-tab {
+    border: 0;
+    background: transparent;
+    padding: 10px 15px;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+}
+
+.timer-tab.active {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+}
+
+#timerModeLabel {
+    color: var(--muted);
+    letter-spacing: 2px;
+    font-size: 11px;
+    margin-top: 35px;
+}
+
+#timerDisplay {
+    font-family: "Patrick Hand", cursive;
+    font-size: clamp(70px, 10vw, 120px);
+    color: var(--rose);
+    margin: 15px 0;
+}
+
+#pomodoroLabel {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.preset-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.preset-buttons button {
+    border: 0;
+    background: #f5ede5;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.preset-buttons strong,
+.preset-buttons small {
+    display: block;
+}
+
+.preset-buttons small {
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+
+/* AVATAR */
+
+.avatar-placeholder {
+    position: relative;
+    width: 130px;
+    height: 180px;
+}
+
+.avatar-face {
+    position: absolute;
+    width: 92px;
+    height: 100px;
+    left: 19px;
+    top: 30px;
+    background: #f6d2b8;
+    border: 3px solid #4b403b;
+    border-radius: 48% 48% 45% 45%;
+    z-index: 2;
+}
+
+.avatar-hair {
+    position: absolute;
+    width: 108px;
+    height: 90px;
+    left: 11px;
+    top: 17px;
+    background: #5b4037;
+    border-radius: 55px 55px 35px 35px;
+    z-index: 3;
+}
+
+.eye {
+    position: absolute;
+    top: 43px;
+    width: 8px;
+    height: 12px;
+    background: #403832;
+    border-radius: 50%;
+}
+
+.left-eye {
+    left: 25px;
+}
+
+.right-eye {
+    right: 25px;
+}
+
+.blush {
+    position: absolute;
+    top: 62px;
+    width: 13px;
+    height: 7px;
+    background: #e7a6a6;
+    opacity: .6;
+    border-radius: 50%;
+}
+
+.left-blush {
+    left: 12px;
+}
+
+.right-blush {
+    right: 12px;
+}
+
+.mouth {
+    position: absolute;
+    top: 62px;
+    left: 42px;
+    font-size: 18px;
+}
+
+.avatar-body {
+    position: absolute;
+    top: 120px;
+    left: 23px;
+    width: 84px;
+    height: 60px;
+    background: #d5c4dc;
+    border: 3px solid #4b403b;
+    border-radius: 35px 35px 15px 15px;
+    text-align: center;
+    padding-top: 18px;
+    color: white;
+    font-size: 20px;
+}
+
+.closet-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+}
+
+.avatar-display-card {
+    text-align: center;
+    min-height: 600px;
+}
+
+.large-avatar {
+    min-height: 470px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closet-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.closet-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    border-bottom: 1px dashed #d9c9bc;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.closet-tab {
+    border: 0;
+    background: #f3ebe3;
+    padding: 8px 11px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.closet-tab.active {
+    background: var(--pink);
+}
+
+.option-section {
+    margin-bottom: 25px;
+}
+
+.option-section h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 22px;
+}
+
+.option-row,
+.choice-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.skin-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px #d7c9bc;
+}
+
+.choice-buttons button {
+    border: 0;
+    background: #f4ebe3;
+    padding: 9px 12px;
+    border-radius: 10px;
+}
+
+
+/* AI */
+
+.ai-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.ai-icon {
+    font-size: 30px;
+}
+
+.ai-grid textarea {
+    width: 100%;
+    min-height: 180px;
+    resize: vertical;
+    border: 1px solid #ded1c5;
+    background: #fffaf4;
+    border-radius: 12px;
+    padding: 13px;
+    margin: 15px 0;
+    outline: none;
+}
+
+.ai-output {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+.flashcard {
+    background: #f5e6e7;
+    padding: 25px;
+    border-radius: 15px;
+    min-height: 120px;
+    cursor: pointer;
+}
+
+.quiz-question {
+    padding: 15px;
+    background: #f5eee7;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+
+/* RESOURCES */
+
+.resource-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.resource-filters select,
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    border: 1px solid #ddd0c4;
+    background: #fffdf9;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+
+.resource-card {
+    background: var(--paper);
+    border: 1px solid #e2d6ca;
+    border-radius: 17px;
+    padding: 20px;
+}
+
+.resource-card h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 24px;
+}
+
+.resource-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.resource-card a {
+    color: var(--rose);
+    font-weight: 700;
+}
+
+
+/* PROFILE */
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+}
+
+.profile-card {
+    text-align: center;
+}
+
+.profile-avatar {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.profile-card p {
+    color: var(--muted);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.stat-grid div {
+    background: #f7efe8;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.stat-grid strong,
+.stat-grid span {
+    display: block;
+}
+
+.stat-grid strong {
+    font-size: 26px;
+}
+
+.stat-grid span {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.subject-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.subject-tags span {
+    background: var(--sage);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+
+/* MODALS */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(60,45,38,.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-content {
+    width: min(500px,100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.close-button {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    border: 0;
+    background: #f1e4da;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.modal-content textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+
+/* ROOM BROWSER */
+
+.level-grid,
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.subject-grid {
+    grid-template-columns: repeat(2,1fr);
+}
+
+.level-card,
+.subject-card {
+    border: 0;
+    background: var(--paper);
+    border: 1px solid #e3d7ca;
+    border-radius: 18px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.level-card:hover,
+.subject-card:hover {
+    transform: translateY(-2px);
+}
+
+.level-card span,
+.subject-card span {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.level-card h3,
+.subject-card h3 {
+    font-family: "Patrick Hand", cursive;
+    font-size: 25px;
+    margin-bottom: 3px;
+}
+
+.level-card p,
+.subject-card p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.room-interface {
+    margin-top: 20px;
+}
+
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-header h2 {
+    margin-bottom: 0;
+}
+
+.room-columns {
+    display: grid;
+    grid-template-columns: 1.5fr .8fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chat-box {
+    height: 400px;
+    background: #fbf5ee;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.chat-input {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid #e0d4c9;
+}
+
+.chat-input input {
+    flex: 1;
+    border: 0;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.chat-input button {
+    border: 0;
+    background: var(--rose);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+
+/* ACCESSIBILITY */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid #b59ab8;
+    outline-offset: 2px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .dashboard-grid,
+    .calendar-layout,
+    .timer-layout,
+    .closet-layout,
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .resource-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .level-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 750px) {
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        width: 280px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .mobile-header {
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        background: rgba(255,253,248,.95);
+        padding: 12px 15px;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px dashed #d9c9bc;
+    }
+
+    .mobile-header h1 {
+        font-family: "Patrick Hand", cursive;
+        color: var(--rose);
+        margin: 0;
+        font-size: 27px;
+    }
+
+    .menu-button {
+        border: 0;
+        background: #f0e1d7;
+        border-radius: 10px;
+        padding: 8px 11px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 22px 15px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    h2 {
+        font-size: 37px;
+    }
+
+    .welcome-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .room-preview-grid,
+    .two-column,
+    .ai-grid,
+    .resource-grid,
+    .level-grid,
+    .subject-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-day {
+        min-height: 65px;
+    }
+
+    .calendar-weekdays span {
+        font-size: 9px;
+    }
+
+    .calendar-event {
+        font-size: 7px;
+    }
+
+    .room-columns {
+        grid-template-columns: 1fr;
+    }
+}
+```
 
