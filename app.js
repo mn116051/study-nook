@@ -1,4 +1,3 @@
-```javascript
 /* =========================================================
    STUDY NOOK
    Main application JavaScript
