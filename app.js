@@ -1946,5 +1946,5 @@ document.addEventListener(
 
     }
 );
-```
+
 console.log("Study Nook app.js is working!");
