@@ -75,7 +75,7 @@ function saveUserData() {
 ----------------------------- */
 
 function showPage(pageId) {
-alert("Clicked: " + pageId);
+   
     document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active-page");
     });
