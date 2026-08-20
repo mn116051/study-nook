@@ -1924,7 +1924,60 @@ function updateEverything() {
 
 }
 
+/* -----------------------------
+   CALENDAR EVENTS
+----------------------------- */
 
+function closeEventModal() {
+    const modal = document.getElementById("eventModal");
+
+    if (modal) {
+        modal.classList.add("hidden");
+    }
+}
+
+function saveEvent(event) {
+    event.preventDefault();
+
+    const title = document.getElementById("eventTitle").value.trim();
+    const date = document.getElementById("eventDate").value;
+    const category = document.getElementById("eventCategory").value;
+    const subject = document.getElementById("eventSubject").value.trim();
+    const description = document.getElementById("eventDescription").value.trim();
+    const reminder = document.getElementById("eventReminder").checked;
+
+    if (!title || !date || !category) {
+        alert("Please fill in the event name, date and category ♡");
+        return;
+    }
+
+    const events = JSON.parse(
+        localStorage.getItem("studyNookEvents") || "[]"
+    );
+
+    events.push({
+        id: Date.now().toString(),
+        title: title,
+        date: date,
+        category: category,
+        subject: subject,
+        description: description,
+        reminder: reminder,
+        createdAt: new Date().toISOString()
+    });
+
+    localStorage.setItem(
+        "studyNookEvents",
+        JSON.stringify(events)
+    );
+
+    closeEventModal();
+
+    document.getElementById("eventForm").reset();
+
+    renderCalendar();
+    renderUpcomingEvents();
+}
 /* -----------------------------
    START APP
 ----------------------------- */
