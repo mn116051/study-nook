@@ -1979,6 +1979,30 @@ function saveEvent(event) {
     renderUpcomingEvents();
 }
 /* -----------------------------
+   SEAT BOOKING
+----------------------------- */
+
+let selectedBookingSlot = "";
+
+function selectBookingSlot(button, time) {
+
+    document
+        .querySelectorAll(".booking-slot")
+        .forEach(slot => {
+            slot.classList.remove("selected");
+        });
+
+    button.classList.add("selected");
+
+    selectedBookingSlot = time;
+
+    const summary = document.getElementById("bookingSummary");
+
+    if (summary) {
+        summary.textContent = time;
+    }
+}
+/* -----------------------------
    START APP
 ----------------------------- */
 
