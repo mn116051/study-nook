@@ -160,12 +160,12 @@ nav {
 }
 
 .page {
-    display: none;
+    display: none !important;
     animation: fadeIn .25s ease;
 }
 
 .page.active-page {
-    display: block;
+    display: block !important;
 }
 
 @keyframes fadeIn {
