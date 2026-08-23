@@ -1457,3 +1457,13 @@ select:focus-visible {
     }
 
 }
+
+/* FIX PAGE OVERLAPPING */
+
+section.page {
+    display: none !important;
+}
+
+section.page.active-page {
+    display: block !important;
+}
