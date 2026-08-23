@@ -503,7 +503,7 @@
 
 </div>
 
-            </div>
+        
 
         </div>
 
@@ -1021,90 +1021,7 @@
 
     </div>
 
-<!-- EVENT MODAL -->
-<div id="eventModal" class="modal hidden">
 
-    <div class="modal-content">
-
-        <button class="close-button" onclick="closeEventModal()">×</button>
-
-        <p class="eyebrow">PLAN AHEAD</p>
-        <h2>Add Event 📅</h2>
-
-        <form id="eventForm" onsubmit="saveEvent(event)">
-
-            <label>
-                Event Name
-                <input id="eventTitle" type="text" placeholder="e.g. Mathematics Test" required>
-            </label>
-
-            <label>
-                Date
-                <input id="eventDate" type="date" required>
-            </label>
-
-            <label>
-                Start Time
-                <input id="eventStartTime" type="time">
-            </label>
-
-            <label>
-                End Time
-                <input id="eventEndTime" type="time">
-            </label>
-
-            <label>
-                Category
-                <select id="eventCategory" required>
-                    <option value="Test">📚 Test</option>
-                    <option value="Assignment">📝 Assignment</option>
-                    <option value="Exam">🎓 Exam</option>
-                    <option value="Project">🎨 Project</option>
-                    <option value="School Event">🏫 School Event</option>
-                    <option value="CCA">🎀 CCA</option>
-                    <option value="Holiday">🌷 Holiday</option>
-                    <option value="Deadline">⏰ Deadline</option>
-                    <option value="Other">📌 Other</option>
-                </select>
-            </label>
-
-            <label>
-                Subject
-                <input id="eventSubject" type="text" placeholder="Optional">
-            </label>
-
-            <label>
-                Description
-                <textarea id="eventDescription" placeholder="Add a little more detail..."></textarea>
-            </label>
-
-            <label class="checkbox-label">
-                <input id="eventReminder" type="checkbox">
-                <span>Remind me about this event ♡</span>
-            </label>
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    onclick="closeEventModal()">
-                    Cancel
-                </button>
-
-                <button
-                    type="submit"
-                    class="primary-button">
-                    Save Event ♡
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
     <!-- RESOURCE MODAL -->
     <div id="resourceModal" class="modal hidden">
 
