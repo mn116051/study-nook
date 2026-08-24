@@ -395,7 +395,7 @@
         <div>
             <p class="eyebrow">FIND YOUR STUDY SPOT</p>
             <h2>Book a Seat 🪑</h2>
-            <p>Choose a date, study area and time slot.</p>
+            <p>Choose a date, time and seat for after-school study.</p>
         </div>
     </div>
 
@@ -406,9 +406,7 @@
 
             <div>
                 <h3>After-School Study</h3>
-                <p>
-                    Reserve a cosy study spot for your afternoon study session.
-                </p>
+                <p>Reserve a cosy study spot for your afternoon study session.</p>
             </div>
         </div>
 
@@ -419,91 +417,58 @@
                 <input type="date" id="bookingDate">
             </label>
 
-        
+        </div>
+
+        <div class="booking-slots">
+
+            <h3>Choose a time 🌷</h3>
+
+            <div class="slot-grid">
+
+                <button type="button" class="booking-slot"
+                    onclick="selectBookingSlot(this, '3:00 PM – 3:50 PM')">
+                    <strong>3:00–3:50 PM</strong>
+                    <span>Choose this time</span>
+                </button>
+
+                <button type="button" class="booking-slot"
+                    onclick="selectBookingSlot(this, '4:00 PM – 4:50 PM')">
+                    <strong>4:00–4:50 PM</strong>
+                    <span>Choose this time</span>
+                </button>
+
+                <button type="button" class="booking-slot"
+                    onclick="selectBookingSlot(this, '5:00 PM – 5:50 PM')">
+                    <strong>5:00–5:50 PM</strong>
+                    <span>Choose this time</span>
+                </button>
+
+            </div>
 
         </div>
 
-      <div class="booking-slots">
+        <div class="seat-selection">
 
-    <h3>Choose a time 🌷</h3>
+            <h3>Choose your seat 🪑</h3>
 
-    <div class="slot-grid">
+            <p class="seat-help">
+                Pick one of the available study seats.
+            </p>
 
-        <button type="button" class="booking-slot" onclick="selectBookingSlot(this, '3:00 PM – 3:50 PM')">
-            <strong>3:00–3:50 PM</strong>
-            <span>Choose this time</span>
-        </button>
+            <div class="seat-grid">
 
-        <button type="button" class="booking-slot" onclick="selectBookingSlot(this, '4:00 PM – 4:50 PM')">
-            <strong>4:00–4:50 PM</strong>
-            <span>Choose this time</span>
-        </button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 1)">🪑 Seat 1</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 2)">🪑 Seat 2</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 3)">🪑 Seat 3</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 4)">🪑 Seat 4</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 5)">🪑 Seat 5</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 6)">🪑 Seat 6</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 7)">🪑 Seat 7</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 8)">🪑 Seat 8</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 9)">🪑 Seat 9</button>
+                <button type="button" class="seat-button" onclick="selectSeat(this, 10)">🪑 Seat 10</button>
 
-        <button type="button" class="booking-slot" onclick="selectBookingSlot(this, '5:00 PM – 5:50 PM')">
-            <strong>5:00–5:50 PM</strong>
-            <span>Choose this time</span>
-        </button>
-
-    </div>
-
-</div>
-
-
-<div class="seat-selection">
-
-    <h3>Choose your seat 🪑</h3>
-
-    <p class="seat-help">
-        Pick one of the available study seats.
-    </p>
-
-    <div class="seat-grid">
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 1)">
-            🪑 Seat 1
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 2)">
-            🪑 Seat 2
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 3)">
-            🪑 Seat 3
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 4)">
-            🪑 Seat 4
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 5)">
-            🪑 Seat 5
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 6)">
-            🪑 Seat 6
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 7)">
-            🪑 Seat 7
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 8)">
-            🪑 Seat 8
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 9)">
-            🪑 Seat 9
-        </button>
-
-        <button type="button" class="seat-button" onclick="selectSeat(this, 10)">
-            🪑 Seat 10
-        </button>
-
-    </div>
-
-</div>
-
-        
+            </div>
 
         </div>
 
@@ -512,7 +477,7 @@
             <p class="eyebrow">YOUR BOOKING</p>
 
             <h3 id="bookingSummary">
-                Choose a date and time slot ♡
+                Choose a date, time and seat ♡
             </h3>
 
             <button
@@ -532,11 +497,13 @@
         <h3>My Bookings 🪑</h3>
 
         <div id="myBookings">
+
             <div class="empty-state">
                 <span>🌷</span>
                 <p>No bookings yet.</p>
                 <small>Your reserved study spots will appear here.</small>
             </div>
+
         </div>
 
     </div>
