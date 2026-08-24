@@ -2020,7 +2020,329 @@ document.addEventListener(
 
         setTimerMode("stopwatch");
 
+       initialiseBooking();
+
     }
 );
 
+/* =============================
+   BOOK A SEAT
+============================= */
+
+let selectedBookingSlot = "";
+let selectedSeatNumber = null;
+
+
+/* Select a time slot */
+function selectBookingSlot(button, time) {
+
+    // Remove selection from all time buttons
+    document.querySelectorAll(".booking-slot").forEach(slot => {
+        slot.classList.remove("selected");
+    });
+
+    // Select clicked button
+    button.classList.add("selected");
+
+    selectedBookingSlot = time;
+
+    updateBookingSummary();
+}
+
+
+/* Select a seat */
+function selectSeat(button, seatNumber) {
+
+    // Remove selection from all seats
+    document.querySelectorAll(".seat-button").forEach(seat => {
+        seat.classList.remove("selected");
+    });
+
+    // Select clicked seat
+    button.classList.add("selected");
+
+    selectedSeatNumber = seatNumber;
+
+    updateBookingSummary();
+}
+
+
+/* Update the booking summary */
+function updateBookingSummary() {
+
+    const date = document.getElementById("bookingDate");
+    const summary = document.getElementById("bookingSummary");
+
+    if (!date || !summary) return;
+
+    const selectedDate = date.value;
+
+    if (selectedDate && selectedBookingSlot && selectedSeatNumber) {
+
+        const formattedDate = new Date(
+            selectedDate + "T00:00:00"
+        ).toLocaleDateString("en-SG", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+        summary.textContent =
+            `${formattedDate} · ${selectedBookingSlot} · Seat ${selectedSeatNumber} ♡`;
+
+    } else if (selectedDate && selectedBookingSlot) {
+
+        summary.textContent =
+            `Seat ${"—"} · ${selectedBookingSlot}`;
+
+    } else if (selectedDate) {
+
+        summary.textContent =
+            `Choose a time and seat ♡`;
+
+    } else if (selectedBookingSlot) {
+
+        summary.textContent =
+            `${selectedBookingSlot} · Choose a date and seat ♡`;
+
+    } else {
+
+        summary.textContent =
+            "Choose a date, time and seat ♡";
+    }
+}
+
+
+/* Confirm booking */
+function confirmBooking() {
+
+    const dateInput = document.getElementById("bookingDate");
+
+    if (!dateInput || !dateInput.value) {
+        showBookingMessage("Please choose a date first ♡");
+        return;
+    }
+
+    if (!selectedBookingSlot) {
+        showBookingMessage("Please choose a time slot ♡");
+        return;
+    }
+
+    if (!selectedSeatNumber) {
+        showBookingMessage("Please choose a seat ♡");
+        return;
+    }
+
+    const bookings = JSON.parse(
+        localStorage.getItem("studyNookBookings") || "[]"
+    );
+
+    /* Check whether this seat is already booked
+       for this date and time */
+    const alreadyBooked = bookings.some(booking =>
+        booking.date === dateInput.value &&
+        booking.time === selectedBookingSlot &&
+        booking.seat === selectedSeatNumber
+    );
+
+    if (alreadyBooked) {
+        showBookingMessage(
+            `Seat ${selectedSeatNumber} is already booked for this time. Please choose another seat ♡`
+        );
+        return;
+    }
+
+    const newBooking = {
+        id: Date.now().toString(),
+        date: dateInput.value,
+        time: selectedBookingSlot,
+        seat: selectedSeatNumber,
+        createdAt: new Date().toISOString()
+    };
+
+    bookings.push(newBooking);
+
+    localStorage.setItem(
+        "studyNookBookings",
+        JSON.stringify(bookings)
+    );
+
+    renderBookings();
+
+    showBookingMessage("Your seat has been booked! 🌷");
+
+    resetBookingSelection();
+}
+
+
+/* Display bookings */
+function renderBookings() {
+
+    const container = document.getElementById("myBookings");
+
+    if (!container) return;
+
+    const bookings = JSON.parse(
+        localStorage.getItem("studyNookBookings") || "[]"
+    );
+
+    if (bookings.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty-state">
+                <span>🌷</span>
+                <p>No bookings yet.</p>
+                <small>Your reserved study spots will appear here.</small>
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = bookings
+        .sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        })
+        .map(booking => {
+
+            const formattedDate = new Date(
+                booking.date + "T00:00:00"
+            ).toLocaleDateString("en-SG", {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            });
+
+            return `
+                <div class="booking-item">
+
+                    <div class="booking-item-icon">
+                        🪑
+                    </div>
+
+                    <div class="booking-item-info">
+
+                        <strong>Seat ${booking.seat}</strong>
+
+                        <span>
+                            ${formattedDate} · ${booking.time}
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="secondary-button"
+                        type="button"
+                        onclick="cancelBooking('${booking.id}')">
+                        Cancel
+                    </button>
+
+                </div>
+            `;
+
+        })
+        .join("");
+}
+
+
+/* Cancel a booking */
+function cancelBooking(id) {
+
+    let bookings = JSON.parse(
+        localStorage.getItem("studyNookBookings") || "[]"
+    );
+
+    bookings = bookings.filter(
+        booking => booking.id !== id
+    );
+
+    localStorage.setItem(
+        "studyNookBookings",
+        JSON.stringify(bookings)
+    );
+
+    renderBookings();
+
+    showBookingMessage("Booking cancelled ♡");
+}
+
+
+/* Small message instead of an annoying alert */
+function showBookingMessage(message) {
+
+    let messageBox = document.getElementById(
+        "bookingMessage"
+    );
+
+    if (!messageBox) {
+
+        messageBox = document.createElement("div");
+
+        messageBox.id = "bookingMessage";
+
+        messageBox.className = "booking-message";
+
+        const bookingCard =
+            document.querySelector(".booking-card");
+
+        if (bookingCard) {
+            bookingCard.appendChild(messageBox);
+        }
+    }
+
+    messageBox.textContent = message;
+
+    messageBox.classList.add("show");
+
+    setTimeout(() => {
+        messageBox.classList.remove("show");
+    }, 3000);
+}
+
+
+/* Reset selected date/time/seat */
+function resetBookingSelection() {
+
+    selectedBookingSlot = "";
+    selectedSeatNumber = null;
+
+    document.querySelectorAll(
+        ".booking-slot, .seat-button"
+    ).forEach(button => {
+        button.classList.remove("selected");
+    });
+
+    const dateInput =
+        document.getElementById("bookingDate");
+
+    if (dateInput) {
+        dateInput.value = "";
+    }
+
+    updateBookingSummary();
+}
+
+
+/* Initialise booking page */
+function initialiseBooking() {
+
+    const dateInput =
+        document.getElementById("bookingDate");
+
+    if (dateInput) {
+
+        // Don't allow dates in the past
+        const today =
+            new Date().toISOString().split("T")[0];
+
+        dateInput.min = today;
+
+        dateInput.addEventListener(
+            "change",
+            updateBookingSummary
+        );
+    }
+
+    renderBookings();
+}
 console.log("Study Nook app.js is working!");
