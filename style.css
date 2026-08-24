@@ -61,6 +61,11 @@ button {
     background: rgba(255,253,248,.92);
     border-right: 1px dashed #d9c9bc;
     z-index: 20;
+
+    /* NEW */
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .logo {
