@@ -1505,3 +1505,8 @@ section.page.active-page {
     background: #d9c9bc;
     border-radius: 10px;
 }
+
+/* FIX HIDDEN MODALS */
+.modal.hidden {
+    display: none !important;
+}
