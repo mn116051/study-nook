@@ -2322,4 +2322,7 @@ function initialiseBooking() {
 
     renderBookings();
 }
+
+initialiseBooking();
+
 console.log("Study Nook app.js is working!");
