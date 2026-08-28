@@ -2023,7 +2023,9 @@ function selectBookingSlot(button, time) {
 
     selectedBookingSlot = time;
 
-    updateBookingSummary();
+updateBookingSummary();
+updateSeatAvailability();
+   
 }
 
 
@@ -2320,9 +2322,48 @@ function initialiseBooking() {
         );
     }
 
-    renderBookings();
+renderBookings();
+updateSeatAvailability();    
 }
 
 initialiseBooking();
 
+/* Update which seats are available */
+function updateSeatAvailability() {
+
+    const dateInput = document.getElementById("bookingDate");
+
+    if (!dateInput) return;
+
+    const selectedDate = dateInput.value;
+
+    const bookings = JSON.parse(
+        localStorage.getItem("studyNookBookings") || "[]"
+    );
+
+    document.querySelectorAll(".seat-button").forEach(button => {
+
+        const seatNumber = Number(
+            button.getAttribute("onclick").match(/\d+/)[0]
+        );
+
+        const isBooked = bookings.some(booking =>
+            booking.date === selectedDate &&
+            booking.time === selectedBookingSlot &&
+            booking.seat === seatNumber
+        );
+
+        button.disabled = isBooked;
+
+        if (isBooked) {
+            button.classList.add("booked");
+            button.innerHTML = `🪑 Seat ${seatNumber} · Booked`;
+        } else {
+            button.disabled = false;
+            button.classList.remove("booked");
+            button.innerHTML = `🪑 Seat ${seatNumber}`;
+        }
+
+    });
+}
 console.log("Study Nook app.js is working!");
