@@ -1510,3 +1510,35 @@ section.page.active-page {
 .modal.hidden {
     display: none !important;
 }
+
+/* =============================
+   SEAT BOOKING STATES
+============================= */
+
+.seat-button {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Available seat */
+.seat-button:not(.selected):not(.booked) {
+    cursor: pointer;
+}
+
+/* Selected seat */
+.seat-button.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 #9f686e;
+}
+
+/* Booked seat */
+.seat-button.booked {
+    opacity: 0.55;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+/* Prevent hover effect on booked seats */
+.seat-button.booked:hover {
+    transform: none;
+}
