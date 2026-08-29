@@ -2317,9 +2317,12 @@ function initialiseBooking() {
         dateInput.min = today;
 
         dateInput.addEventListener(
-            "change",
-            updateBookingSummary
-        );
+    "change",
+    () => {
+        updateBookingSummary();
+        updateSeatAvailability();
+    }
+);
     }
 
 renderBookings();
