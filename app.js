@@ -1988,7 +1988,9 @@ document.addEventListener(
     () => {
 
         updateEverything();
-
+       
+updateStudentName();
+       
         renderCalendar();
 
         renderResources();
@@ -2369,4 +2371,66 @@ function updateSeatAvailability() {
 
     });
 }
+
+/* =============================
+   STUDENT NAME
+============================= */
+
+function saveStudentName() {
+
+    const nameInput = document.getElementById("studentName");
+
+    if (!nameInput) return;
+
+    const name = nameInput.value.trim();
+
+    if (!name) {
+        alert("Please enter your name ♡");
+        return;
+    }
+
+    localStorage.setItem("studyNookStudentName", name);
+
+    updateStudentName();
+
+    alert("Name saved! 🌷");
+}
+
+
+function updateStudentName() {
+
+    const savedName =
+        localStorage.getItem("studyNookStudentName") || "Student";
+
+    const profileName =
+        document.getElementById("profileUsername");
+
+    const dashboardName =
+        document.getElementById("dashboardUsername");
+
+    const welcomeName =
+        document.getElementById("welcomeName");
+
+    const nameInput =
+        document.getElementById("studentName");
+
+
+    if (profileName) {
+        profileName.textContent = savedName;
+    }
+
+    if (dashboardName) {
+        dashboardName.textContent = savedName;
+    }
+
+    if (welcomeName) {
+        welcomeName.textContent = savedName;
+    }
+
+    if (nameInput) {
+        nameInput.value =
+            savedName === "Student" ? "" : savedName;
+    }
+}
+
 console.log("Study Nook app.js is working!");
