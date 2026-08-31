@@ -2001,6 +2001,8 @@ updateStudentName();
 
        initialiseBooking();
 
+updateStudentName();
+       
     }
 );
 
@@ -2331,7 +2333,6 @@ renderBookings();
 updateSeatAvailability();    
 }
 
-initialiseBooking();
 
 /* Update which seats are available */
 function updateSeatAvailability() {
