@@ -984,7 +984,7 @@ function sendLocalMessage() {
         "8px";
 
     message.innerHTML =
-        `<strong>${escapeHTML(userData.username)}</strong><br>${escapeHTML(text)}`;
+        `<strong>${escapeHTML(localStorage.getItem("studyNookStudentName") || "Student")}</strong><br>${escapeHTML(text)}`
 
 
     const empty =
