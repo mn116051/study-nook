@@ -110,7 +110,8 @@ function showPage(pageId) {
         renderRoomBrowser();
     }
 
-    updateEverything();
+       updateEverything();
+    updateStudentName();
 
 }
 
