@@ -951,57 +951,53 @@ function openRoom(roomId) {
 
 
 function sendLocalMessage() {
-
-    const input =
-        document.getElementById("chatInput");
-
-    const messages =
-        document.getElementById("chatMessages");
-
+    const input = document.getElementById("chatInput");
+    const messages = document.getElementById("chatMessages");
 
     if (!input || !messages) return;
 
-
-    const text =
-        input.value.trim();
-
+    const text = input.value.trim();
     if (!text) return;
 
+    const studentName =
+        localStorage.getItem("studyNookStudentName") || "Student";
 
-    const message =
-        document.createElement("div");
+    const message = {
+        name: studentName,
+        text: text,
+        time: Date.now()
+    };
 
-    message.style.background =
-        "#f0e0e2";
+    // Get messages already saved for this room
+    const roomKey = "studyNookChat_" + (window.currentRoomId || "default");
+    const savedMessages =
+        JSON.parse(localStorage.getItem(roomKey)) || [];
 
-    message.style.padding =
-        "10px";
+    // Add the new message
+    savedMessages.push(message);
 
-    message.style.borderRadius =
-        "12px";
+    // Save messages
+    localStorage.setItem(roomKey, JSON.stringify(savedMessages));
 
-    message.style.marginBottom =
-        "8px";
-
-    message.innerHTML =
-        `<strong>${escapeHTML(localStorage.getItem("studyNookStudentName") || "Student")}</strong><br>${escapeHTML(text)}`
-
-
-    const empty =
-        messages.querySelector(".empty-state");
-
+    // Remove the empty message
+    const empty = messages.querySelector(".empty-state");
     if (empty) empty.remove();
 
+    // Display the message
+    const messageElement = document.createElement("div");
+    messageElement.style.background = "#f0e0e2";
+    messageElement.style.padding = "10px";
+    messageElement.style.borderRadius = "12px";
+    messageElement.style.marginBottom = "8px";
 
-    messages.appendChild(message);
+    messageElement.innerHTML =
+        `<strong>${escapeHTML(message.name)}</strong><br>${escapeHTML(message.text)}`;
+
+    messages.appendChild(messageElement);
 
     input.value = "";
-
-    messages.scrollTop =
-        messages.scrollHeight;
-
+    messages.scrollTop = messages.scrollHeight;
 }
-
 
 /* -----------------------------
    TIMER
