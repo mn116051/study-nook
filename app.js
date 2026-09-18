@@ -944,8 +944,38 @@ function openRoom(roomId) {
     `;
 
 
-    window.currentRoomId =
-        roomId;
+   window.currentRoomId = roomId;
+
+// Load saved chat messages for this room
+const roomKey = "studyNookChat_" + roomId;
+const savedMessages =
+    JSON.parse(localStorage.getItem(roomKey)) || [];
+
+setTimeout(() => {
+    const messages = document.getElementById("chatMessages");
+    if (!messages) return;
+
+    const empty = messages.querySelector(".empty-state");
+    if (savedMessages.length > 0 && empty) {
+        empty.remove();
+    }
+
+    savedMessages.forEach(message => {
+        const messageElement = document.createElement("div");
+
+        messageElement.style.background = "#f0e0e2";
+        messageElement.style.padding = "10px";
+        messageElement.style.borderRadius = "12px";
+        messageElement.style.marginBottom = "8px";
+
+        messageElement.innerHTML =
+            `<strong>${escapeHTML(message.name)}</strong><br>${escapeHTML(message.text)}`;
+
+        messages.appendChild(messageElement);
+    });
+
+    messages.scrollTop = messages.scrollHeight;
+}, 0); 
 
 }
 
