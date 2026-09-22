@@ -1277,13 +1277,8 @@ function setSkin(color) {
 }
 
 
-function setPresentation(type) {
-
-    userData.avatar.presentation =
-        type;
-
-    applyAvatar();
-
+function setPresentation() {
+    // Presentation options are no longer used.
 }
 
 
