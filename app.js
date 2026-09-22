@@ -1304,15 +1304,55 @@ function setHeadwear(type) {
 
 function applyAvatar() {
 
+    // Skin
     document.querySelectorAll(".avatar-face")
         .forEach(face => {
+            face.style.background = userData.avatar.skin;
+        });
 
-            face.style.background =
-                userData.avatar.skin;
+
+    // Hair
+    document.querySelectorAll(".avatar-hair")
+        .forEach(hair => {
+
+            const hairType = userData.avatar.hair;
+
+            hair.style.background = "#5b4037";
+
+            if (hairType === "short") {
+                hair.style.borderRadius = "50% 50% 35% 35%";
+                hair.style.height = "35%";
+            }
+
+            if (hairType === "long") {
+                hair.style.borderRadius = "50% 50% 30% 30%";
+                hair.style.height = "65%";
+            }
+
+            if (hairType === "curly") {
+                hair.style.borderRadius = "45% 55% 50% 50%";
+                hair.style.height = "45%";
+            }
+
+            if (hairType === "bob") {
+                hair.style.borderRadius = "50% 50% 35% 35%";
+                hair.style.height = "50%";
+            }
+
+            if (hairType === "braids") {
+                hair.style.borderRadius = "45% 45% 30% 30%";
+                hair.style.height = "55%";
+            }
+
+            if (hairType === "bun") {
+                hair.style.borderRadius = "50% 50% 35% 35%";
+                hair.style.height = "40%";
+            }
 
         });
 
 
+    // Headwear
     document.querySelectorAll(".avatar-hair")
         .forEach(hair => {
 
@@ -1320,15 +1360,7 @@ function applyAvatar() {
                 userData.avatar.headwear === "hijab" ||
                 userData.avatar.headwear === "wrapped"
             ) {
-
-                hair.style.background =
-                    "#a88f9b";
-
-            } else {
-
-                hair.style.background =
-                    "#5b4037";
-
+                hair.style.background = "#a88f9b";
             }
 
         });
