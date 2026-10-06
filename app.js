@@ -1313,43 +1313,48 @@ function applyAvatar() {
 
     // Hair
     document.querySelectorAll(".avatar-hair")
-        .forEach(hair => {
+    .forEach(hair => {
 
-            const hairType = userData.avatar.hair;
+        const hairType = userData.avatar.hair;
 
-            hair.style.background = "#5b4037";
+        // Reset the hair
+        hair.style.width = "108px";
+        hair.style.height = "72px";
+        hair.style.left = "11px";
+        hair.style.top = "12px";
+        hair.style.background = "#5b4037";
+        hair.style.borderRadius = "55px 55px 28px 28px";
 
-            if (hairType === "short") {
-                hair.style.borderRadius = "50% 50% 35% 35%";
-                hair.style.height = "35%";
-            }
+        if (hairType === "long") {
+            hair.style.height = "105px";
+            hair.style.top = "8px";
+            hair.style.borderRadius = "50px 50px 35px 35px";
+        }
 
-            if (hairType === "long") {
-                hair.style.borderRadius = "50% 50% 30% 30%";
-                hair.style.height = "65%";
-            }
+        if (hairType === "curly") {
+            hair.style.height = "82px";
+            hair.style.borderRadius = "45% 55% 50% 50%";
+        }
 
-            if (hairType === "curly") {
-                hair.style.borderRadius = "45% 55% 50% 50%";
-                hair.style.height = "45%";
-            }
+        if (hairType === "bob") {
+            hair.style.height = "88px";
+            hair.style.top = "10px";
+            hair.style.borderRadius = "50px 50px 38px 38px";
+        }
 
-            if (hairType === "bob") {
-                hair.style.borderRadius = "50% 50% 35% 35%";
-                hair.style.height = "50%";
-            }
+        if (hairType === "braids") {
+            hair.style.height = "90px";
+            hair.style.top = "8px";
+            hair.style.borderRadius = "50px 50px 30px 30px";
+        }
 
-            if (hairType === "braids") {
-                hair.style.borderRadius = "45% 45% 30% 30%";
-                hair.style.height = "55%";
-            }
+        if (hairType === "bun") {
+            hair.style.height = "75px";
+            hair.style.top = "15px";
+            hair.style.borderRadius = "50%";
+        }
 
-            if (hairType === "bun") {
-                hair.style.borderRadius = "50% 50% 35% 35%";
-                hair.style.height = "40%";
-            }
-
-        });
+    });
 
 
     // Headwear
