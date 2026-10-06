@@ -748,14 +748,14 @@ h2 {
 .avatar-hair {
     position: absolute;
     width: 108px;
-    height: 90px;
+    height: 72px;
     left: 11px;
-    top: 17px;
+    top: 12px;
     background: #5b4037;
-    border-radius: 55px 55px 35px 35px;
+    border-radius: 55px 55px 28px 28px;
     z-index: 3;
+    transition: all 0.25s ease;
 }
-
 .eye {
     position: absolute;
     top: 43px;
