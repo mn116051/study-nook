@@ -1283,12 +1283,10 @@ function setPresentation() {
 
 
 function setHair(type) {
+    alert("Hair button works: " + type);
 
-    userData.avatar.hair =
-        type;
-
+    userData.avatar.hair = type;
     applyAvatar();
-
 }
 
 
