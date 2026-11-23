@@ -160,8 +160,11 @@ nav {
 
 .main-content {
     margin-left: 260px;
+    width: calc(100% - 260px);
+    min-width: 0;
     padding: 45px;
     max-width: 1500px;
+    box-sizing: border-box;
 }
 
 .page {
