@@ -58,7 +58,7 @@ button {
     bottom: 0;
     width: 260px;
     padding: 28px 18px;
-    background: rgba(255,253,248,.92);
+    background: #fffdf8;
     border-right: 1px dashed #d9c9bc;
     z-index: 20;
 
